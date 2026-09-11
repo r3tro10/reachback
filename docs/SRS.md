@@ -327,25 +327,25 @@ The onboarding form SHALL collect (minimum):
 ### 5.1 Components
 ```
 ┌─────────────────────────────────────────────┐
-│              Next.js Web Application         │
+│           Next.js Web Application           │
 │                                             │
 │  ┌─────────────┐   ┌─────────────────────┐  │
-│  │  Dashboard  │   │     API Routes       │  │
+│  │  Dashboard  │   │     API Routes      │  │
 │  │  (Frontend) │   │                     │  │
 │  │             │   │ /api/webhook/call   │  │
 │  │  - Clients  │   │ /api/webhook/sms    │  │
 │  │  - Convos   │   │ /api/ai/respond     │  │
 │  │  - KB edit  │   │ /api/clients        │  │
 │  └─────────────┘   └─────────────────────┘  │
-└──────────────┬──────────────────────────────┘
-               │
-    ┌──────────┼───────────┐
-    │          │           │
-┌───▼───┐ ┌───▼───┐ ┌─────▼─────┐
-│  DB   │ │  AI   │ │Telephony  │
-│Postgres│ │OpenAI │ │   API     │
-│       │ │GPT-4o │ │           │
-└───────┘ └───────┘ └───────────┘
+└─────────────────┬───────────────────────────┘
+                  │
+       ┌──────────┼───────────┐
+       │          │           │
+    ┌───▼───┐ ┌───▼───┐ ┌─────▼─────┐
+    │  DB   │ │  AI   │ │Telephony  │
+   │Postgres│ │OpenAI │ │   API     │
+    │       │ │GPT-4o │ │           │
+    └───────┘ └───────┘ └───────────┘
 ```
 
 ### 5.2 Database Schema (Core Tables)
