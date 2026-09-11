@@ -1,5 +1,9 @@
-1.Use_Case
+# UML Diagrams
+## AnteikuAI Reachback — System Architecture
 
+## 1. Use Case Diagram
+
+```mermaid
 graph LR
     subgraph Actors
         Admin[AnteikuAI Admin]
@@ -49,12 +53,11 @@ graph LR
     UC11 -->|triggers| UC12
     UC13 -->|drives| UC14
     UC14 -->|triggers| UC9
+```
 
+## 2. Class Diagram
 
-..........................................................................................
-
-2.Class
-
+```mermaid
 classDiagram
     class Client {
         +UUID id
@@ -151,12 +154,11 @@ classDiagram
     AIEngine --> KBEntry : reads
     AIEngine --> Conversation : updates
     AIEngine --> NotificationService : triggers
+```
 
+## 3. Sequence Diagram — Missed Call
 
-..................................................................................
-
-3.Sequence: Missed Call
-
+```mermaid
 sequenceDiagram
     autonumber
     participant C as Customer Phone
@@ -195,11 +197,11 @@ sequenceDiagram
             T->>R: Deliver missed call alert
         end
     end
+```
 
-..................................................................................
+## 4. Sequence Diagram — AI Reply
 
-4.Squence AI Reply
-
+```mermaid
 sequenceDiagram
     autonumber
     participant C as Customer Phone
@@ -251,11 +253,11 @@ sequenceDiagram
             end
         end
     end
+```
 
-...................................................................................
+## 5. State Diagram — Conversation
 
-5. State Conversation
-
+```mermaid
 stateDiagram-v2
     [*] --> Pending : Missed call webhook received
 
@@ -286,11 +288,11 @@ stateDiagram-v2
         name, address, postcode,
         preferred time, callback number
     end note
+```
 
-............................................................................................
+## 6. Component Diagram
 
-6. component 
-
+```mermaid
 graph TB
     subgraph Browser["Client Browser"]
         UI[Admin Dashboard UI\nNext.js React Pages]
@@ -343,11 +345,11 @@ graph TB
     CLIENT_API --> DB
     KB_API --> DB
     CONVO_API --> DB
+```
 
-.............................................................................................
+## 7. ER Diagram
 
-7. ER Diagram
-
+```mermaid
 erDiagram
     CLIENT {
         uuid id PK
@@ -423,5 +425,4 @@ erDiagram
     CONTACT ||--o{ CONVERSATION : "has"
     CONTACT ||--o| OPPORTUNITY : "linked to"
     CONVERSATION ||--o{ MESSAGE : "contains"
-
-...........................................................................................
+```
