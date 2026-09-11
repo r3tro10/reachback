@@ -1,5 +1,3 @@
-const crypto = require('crypto');
-
 function signatureMiddleware(req, res, next) {
   try {
     // Validate Twilio webhook signature

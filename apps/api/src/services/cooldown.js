@@ -1,7 +1,5 @@
 const { db } = require('../db');
 
-const COOLDOWN_CACHE = new Map(); // In production, use Redis
-
 async function isInCooldown(contactId) {
   try {
     const result = await db.query(

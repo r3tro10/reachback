@@ -34,6 +34,9 @@ jobs:
 
   security:
     runs-on: ubuntu-latest
+    # Skipped until a SNYK_TOKEN repo secret is added (Settings > Secrets and variables > Actions).
+    # https://docs.snyk.io/getting-started/how-to-get-your-snyk-api-token
+    if: ${{ secrets.SNYK_TOKEN != '' }}
 
     steps:
       - uses: actions/checkout@v3

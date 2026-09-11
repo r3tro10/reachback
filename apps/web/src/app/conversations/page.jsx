@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import api from '@/lib/api';
 import ConversationThread from '@/components/ConversationThread';
 
-export default function ConversationsPage() {
+function ConversationsList() {
   const searchParams = useSearchParams();
   const clientId = searchParams.get('client_id');
   const [conversations, setConversations] = useState([]);
@@ -34,8 +34,7 @@ export default function ConversationsPage() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className="conversations-page">
-      <h1>Conversations</h1>
+    <>
       {clientId && (
         <div className="conversations-list">
           {conversations.map((conv) => (
@@ -43,6 +42,17 @@ export default function ConversationsPage() {
           ))}
         </div>
       )}
+    </>
+  );
+}
+
+export default function ConversationsPage() {
+  return (
+    <div className="conversations-page">
+      <h1>Conversations</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ConversationsList />
+      </Suspense>
     </div>
   );
 }

@@ -1,6 +1,6 @@
-const { getContactByPhone } = require('../db/models/contact');
+const { getContactByPhone, setOptOut } = require('../db/models/contact');
 const { createMessage } = require('../db/models/message');
-const { getConversationByContact } = require('../db/models/conversation');
+const { getConversationByContact, createConversation } = require('../db/models/conversation');
 const aiService = require('../services/ai');
 const smsService = require('../services/sms');
 const cooldownService = require('../services/cooldown');
@@ -38,7 +38,7 @@ async function handleInboundSMS(req, res) {
 
     // Handle opt-out
     if (aiResponse.action === 'opt_out') {
-      await contact.setOptOut(true);
+      await setOptOut(contact.id, true);
       return res.status(200).json({ status: 'opted_out' });
     }
 

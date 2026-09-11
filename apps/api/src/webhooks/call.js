@@ -1,13 +1,13 @@
 const { getContactByPhone } = require('../db/models/contact');
 const { createMessage } = require('../db/models/message');
-const { createConversation } = require('../db/models/conversation');
+const { getConversationByContact, createConversation } = require('../db/models/conversation');
 const aiService = require('../services/ai');
 const smsService = require('../services/sms');
 const notifyService = require('../services/notify');
 
 async function handleMissedCall(req, res) {
   try {
-    const { caller_phone, client_id, timestamp } = req.body;
+    const { caller_phone, client_id } = req.body;
 
     const contact = await getContactByPhone(caller_phone, client_id);
     if (!contact) {
