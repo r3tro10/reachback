@@ -1,0 +1,17 @@
+{
+  "name": "reachback",
+  "version": "0.1.0",
+  "description": "AI-powered SMS outreach platform for roofers",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces",
+    "build": "npm run build --workspaces",
+    "install:all": "npm install && npm install --workspaces",
+    "db:migrate": "npm run migrate -w apps/api",
+    "lint": "npm run lint --workspaces"
+  }
+}
